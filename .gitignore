@@ -1,0 +1,20 @@
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+npm-debug.log*
+
+# Local lead records and Telegram polling offset (contain personal data/state)
+/data/
+
+# Browser QA artifacts
+qa-report/
+playwright-report/
+test-results/
+
+# Temporary backups created by maintenance scripts
+.backup-mood-photo-refresh-*/
+
+# Manual source backups
+src/*.bak*

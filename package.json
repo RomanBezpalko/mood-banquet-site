@@ -1,0 +1,37 @@
+{
+  "name": "banquet-landing",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node server.mjs",
+    "build": "vite build",
+    "start": "node server.mjs --production",
+    "preview": "node server.mjs --production",
+    "telegram:chat-id": "node scripts/get-telegram-chat-id.mjs",
+    "telegram:test": "node scripts/telegram-delivery-check.mjs",
+    "security:audit": "npm audit --audit-level=high",
+    "qa:security": "npm run security:audit && npm test",
+    "qa:production": "npm run build && node --test tests/security/production-server.test.mjs",
+    "test": "node --test tests/*.test.mjs tests/security/*.test.mjs",
+    "test:telegram": "node --test tests/telegram.integration.test.mjs",
+    "qa:server": "vite --host 127.0.0.1 --port 4173 --strictPort",
+    "qa": "npm test && npm run build && playwright test && node qa/generate-summary.mjs",
+    "qa:report": "playwright show-report qa-report/playwright-html",
+    "qa:summary": "node qa/generate-summary.mjs",
+    "qa:install": "playwright install chromium",
+    "qa:site": "playwright test",
+    "qa:visual:baseline": "playwright test --config=playwright.visual.config.mjs --update-snapshots",
+    "qa:visual": "playwright test --config=playwright.visual.config.mjs"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "latest",
+    "vite": "latest",
+    "react": "latest",
+    "react-dom": "latest"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "latest",
+    "@playwright/test": "latest"
+  }
+}
