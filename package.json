@@ -6,6 +6,9 @@
   "scripts": {
     "dev": "node server.mjs",
     "build": "vite build",
+    "format": "prettier --write src shared tests package.json index.html",
+    "format:check": "prettier --check src shared tests package.json index.html",
+    "lint": "eslint src shared tests",
     "start": "node server.mjs --production",
     "preview": "node server.mjs --production",
     "telegram:chat-id": "node scripts/get-telegram-chat-id.mjs",
@@ -26,12 +29,18 @@
   },
   "dependencies": {
     "@vitejs/plugin-react": "latest",
-    "vite": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "vite": "latest"
   },
   "devDependencies": {
     "@axe-core/playwright": "latest",
-    "@playwright/test": "latest"
+    "@eslint/js": "^9.39.5",
+    "@playwright/test": "latest",
+    "eslint": "^9.39.5",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "globals": "^17.14.0",
+    "prettier": "^3.9.10"
   }
 }

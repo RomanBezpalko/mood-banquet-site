@@ -223,7 +223,7 @@ function makeLeadMessage(data) {
     `Коментар: ${cleanText(data.comment, 1000)}`,
     '',
     `Час отримання: ${receivedAt}`,
-    'Джерело: сайт MOOD restaurant'
+    'Джерело: сайт ресторану MOOD'
   ];
   return lines.join('\n').slice(0, 4000);
 }
@@ -301,7 +301,7 @@ async function beginManagerRegistration(message, allowUpdate = false) {
     '• номер телефону, який ви самостійно надішлете кнопкою Telegram;',
     '• Telegram ID та username (якщо він є).',
     '',
-    'Мета обробки: ідентифікація менеджера, призначення відповідального за заявку та облік дій із банкетними заявками MOOD.',
+    'Мета обробки: ідентифікація менеджера, призначення відповідального за заявку та облік дій із бенкетними заявками MOOD.',
     '',
     'Дані зберігатимуться у файлі data/managers.json на сервері MOOD і будуть доступні особам із доступом до серверної системи. Дані не використовуються для рекламних розсилок. Ви можете видалити реєстраційний профіль командою /delete_my_data; історія дій у заявках залишиться знеособленою для збереження аудиту.',
     '',
@@ -414,7 +414,7 @@ async function handleGroupBotMessage(message) {
   }
   const newMembers = Array.isArray(message.new_chat_members) ? message.new_chat_members.filter(member => !member.is_bot) : [];
   if (newMembers.length && String(message.chat.id) === String(configuredGroupChatId)) {
-    return sendManagerRegistrationLink(message.chat.id, 'Вітаємо в групі MOOD! Щоб отримати доступ до керування банкетними заявками, кожен менеджер має пройти особисту реєстрацію з підтвердженням номера телефону.');
+    return sendManagerRegistrationLink(message.chat.id, 'Вітаємо в групі MOOD! Щоб отримати доступ до керування бенкетними заявками, кожен менеджер має пройти особисту реєстрацію з підтвердженням номера телефону.');
   }
 }
 
