@@ -365,8 +365,13 @@ test("адаптивність, читабельність і цілі дост�
   }
 });
 
-test("кнопки зв’язку, телефон, Viber та Telegram", async ({ page }) => {
+test("кнопки зв’язку, телефон, Viber та Telegram", async ({
+  page,
+}, testInfo) => {
   await preparePage(page);
+  if (testInfo.project.name.includes("mobile")) {
+    await page.locator("#about").scrollIntoViewIfNeeded();
+  }
   const trigger = page.getByRole("button", {
     name: /відкрити способи зв’язку/i,
   });

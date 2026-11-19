@@ -2112,38 +2112,6 @@ button:disabled {
   }
 }
 
-/* MOOD PHOTO REFRESH — existing layout and brand retained */
-.hero {
-  background-image: url("/images/mood-refresh/hero-banquet.jpg");
-  background-position: center 48%;
-}
-
-.space-photo img {
-  object-position: center 48%;
-}
-
-.menu-image img {
-  object-position: center 50%;
-}
-
-.event-card img {
-  object-position: center 42%;
-}
-
-.gallery-photo img {
-  object-position: center;
-}
-
-@media (max-width: 600px) {
-  .hero {
-    background-position: center 44%;
-  }
-
-  .event-card img {
-    object-position: center 38%;
-  }
-}
-
 .mobile-calculator-cta {
   display: none;
 }
@@ -2245,4 +2213,67 @@ body textarea {
 
 body p {
   line-height: 1.55;
+}
+
+/* MOOD PHOTO REFRESH V2 - portrait image on small screens */
+@media (max-width: 600px) {
+  .hero {
+    background-image: var(--hero-image-mobile, var(--hero-image)) !important;
+    background-position: center center !important;
+  }
+}
+/* Mobile action controls share one compact row and stay out of the contact form. */
+@media (max-width: 767px) {
+  .mobile-calculator-cta {
+    left: 16px;
+    right: calc(16px + 54px + 12px);
+    bottom: calc(14px + env(safe-area-inset-bottom));
+    min-height: 54px;
+    padding: 10px 12px;
+    font-size: clamp(11px, 3.4vw, 14px);
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  .floating-contact {
+    display: none;
+    right: 16px;
+    bottom: calc(14px + env(safe-area-inset-bottom));
+    z-index: 1001;
+  }
+
+  .floating-contact.mobile-action-visible {
+    display: block;
+  }
+
+  .contact-trigger {
+    gap: 0;
+  }
+
+  .contact-trigger > span {
+    display: none;
+  }
+
+  .contact-trigger > b {
+    width: 54px;
+    height: 54px;
+  }
+}
+
+@media (max-width: 360px) {
+  .mobile-calculator-cta {
+    left: 12px;
+    right: calc(12px + 48px + 10px);
+    padding: 10px;
+    font-size: 12px;
+  }
+
+  .floating-contact {
+    right: 12px;
+  }
+
+  .contact-trigger > b {
+    width: 48px;
+    height: 48px;
+  }
 }

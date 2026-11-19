@@ -7,7 +7,10 @@ export function Hero({ onOpenCalculator }) {
       className="hero"
       id="top"
       data-mobile-cta-trigger
-      style={{ "--hero-image": `url("${IMG.hero}")` }}
+      style={{
+        "--hero-image": `url("${IMG.hero}")`,
+        "--hero-image-mobile": `url("${IMG.heroMobile}")`,
+      }}
     >
       <div className="hero-overlay" />
       <div className="hero-content">

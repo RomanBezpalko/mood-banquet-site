@@ -11,6 +11,7 @@ test.describe("mobile calculator CTA", () => {
     page,
   }) => {
     const cta = page.locator(".mobile-calculator-cta");
+    const floatingContact = page.locator(".floating-contact");
     const hero = page.locator("[data-mobile-cta-trigger]");
     const footer = page.locator("[data-mobile-cta-hide]");
 
@@ -18,6 +19,7 @@ test.describe("mobile calculator CTA", () => {
     await expect(cta).toBeHidden();
     await expect(cta).toHaveAttribute("aria-hidden", "true");
     await expect(cta).toHaveAttribute("tabindex", "-1");
+    await expect(floatingContact).toBeHidden();
 
     await page.evaluate(() => {
       const section = document.querySelector("[data-mobile-cta-trigger]");
@@ -26,11 +28,25 @@ test.describe("mobile calculator CTA", () => {
     await expect(cta).toBeVisible();
     await expect(cta).toHaveAttribute("aria-hidden", "false");
     await expect(cta).toHaveAttribute("tabindex", "0");
+    await expect(floatingContact).toBeVisible();
+
+    const ctaBox = await cta.boundingBox();
+    const contactBox = await floatingContact
+      .locator(".contact-trigger > b")
+      .boundingBox();
+    expect(ctaBox).not.toBeNull();
+    expect(contactBox).not.toBeNull();
+    expect(ctaBox.x + ctaBox.width).toBeLessThanOrEqual(contactBox.x);
+
+    await page.locator("#contact").scrollIntoViewIfNeeded();
+    await expect(cta).toBeHidden();
+    await expect(floatingContact).toBeHidden();
 
     await footer.scrollIntoViewIfNeeded();
     await expect(cta).toBeHidden();
 
     await hero.scrollIntoViewIfNeeded();
+    await expect(floatingContact).toBeHidden();
     await expect(cta).toBeHidden();
 
     await page.evaluate(() => {

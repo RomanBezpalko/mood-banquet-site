@@ -1,4 +1,4 @@
-import { benefits, events, MOOD, spaces } from "../data/siteData.js";
+import { benefits, events, IMG, MOOD, spaces } from "../data/siteData.js";
 import { Icon } from "./Icons.jsx";
 
 export function Benefits() {
@@ -80,7 +80,7 @@ export function MenuSection({ onOpenCalculator }) {
     <section className="menu-section" id="menu">
       <div className="menu-image">
         <img
-          src="/images/mood-refresh/food-main.jpg"
+          src={IMG.food}
           alt="Страви для святкового столу"
           loading="lazy"
           decoding="async"
@@ -159,19 +159,13 @@ export function Events() {
 }
 
 export function Gallery() {
-  const photos = [
-    "/images/mood-refresh/gallery-banquet.jpg",
-    "/images/mood-refresh/gallery-terrace.jpg",
-    "/images/mood-refresh/gallery-piano.jpg",
-    "/images/mood-refresh/gallery-brand-detail.jpg",
-    "/images/mood-refresh/gallery-cocktails.jpg",
-  ];
+  const photos = IMG.gallery;
   const names = [
-    "Бенкетна зала",
-    "Весільне оформлення",
-    "Святкове меню",
-    "Події та зустрічі",
-    "Сервірування столу",
+    "\u0411\u0435\u043d\u043a\u0435\u0442\u043d\u0435 \u0441\u0435\u0440\u0432\u0456\u0440\u0443\u0432\u0430\u043d\u043d\u044f",
+    "\u0422\u0435\u0440\u0430\u0441\u0430 MOOD",
+    "\u041c\u0443\u0437\u0438\u0447\u043d\u0456 \u0432\u0435\u0447\u043e\u0440\u0438",
+    "\u0412\u0445\u0456\u0434 \u0434\u043e MOOD",
+    "\u041f\u043e\u0434\u0430\u0447\u0430 \u043d\u0430\u043f\u043e\u0457\u0432",
   ];
   return (
     <section className="section gallery-section" id="gallery">

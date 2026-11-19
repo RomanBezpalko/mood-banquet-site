@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { MOOD } from "../data/siteData.js";
 import { Icon } from "./Icons.jsx";
 
-export function FloatingContact() {
+export function FloatingContact({ mobileVisible = false }) {
   const [expanded, setExpanded] = useState(false);
   useEffect(() => {
     if (!expanded) return undefined;
@@ -23,7 +23,9 @@ export function FloatingContact() {
           onClick={() => setExpanded(false)}
         />
       )}
-      <div className={`floating-contact ${expanded ? "is-open" : ""}`}>
+      <div
+        className={`floating-contact ${mobileVisible ? "mobile-action-visible" : ""} ${expanded ? "is-open" : ""}`}
+      >
         {expanded ? (
           <div className="contact-methods" aria-label="Способи зв’язку">
             <a

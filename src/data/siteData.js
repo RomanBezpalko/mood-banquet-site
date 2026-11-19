@@ -1,11 +1,19 @@
 export const IMG = {
-  hero: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=2200&q=88",
-  intimate:
-    "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1200&q=85",
-  event:
-    "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=1200&q=85",
-  party:
-    "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=1200&q=85",
+  hero: "/images/mood-refresh/hero-desktop.jpg",
+  heroMobile: "/images/mood-refresh/hero-mobile.jpg",
+  banquet: "/images/mood-refresh/space-banquet.jpg",
+  intimate: "/images/mood-refresh/space-interior.jpg",
+  event: "/images/mood-refresh/space-terrace.jpg",
+  party: "/images/mood-refresh/space-banquet.jpg",
+  food: "/images/mood-refresh/food-main.jpg",
+  wedding: "/images/mood-refresh/formal-setting.jpg",
+  gallery: [
+    "/images/mood-refresh/gallery-banquet.jpg",
+    "/images/mood-refresh/space-terrace.jpg",
+    "/images/mood-refresh/gallery-piano.jpg",
+    "/images/mood-refresh/gallery-exterior.jpg",
+    "/images/mood-refresh/gallery-cocktails.jpg",
+  ],
 };
 
 export const MOOD = {
@@ -58,7 +66,7 @@ export const spaces = [
   {
     title: "Сімейне святкування",
     subtitle: "Тепла зустріч із близькими та нагода побути разом",
-    image: "/images/mood-refresh/space-banquet.jpg",
+    image: IMG.banquet,
     note: "Формат і можливості узгоджуються з менеджером",
   },
   {
@@ -70,7 +78,7 @@ export const spaces = [
   {
     title: "Подія у вашому форматі",
     subtitle: "Розкажіть, що плануєте — обговоримо можливості MOOD",
-    image: "/images/mood-refresh/food-main.jpg",
+    image: IMG.event,
     note: "Умови та доступність — за погодженням",
   },
 ];
@@ -79,7 +87,7 @@ export const events = [
   {
     title: "Весілля",
     desc: "День, у якому важлива кожна мить.",
-    image: "/images/mood-refresh/event-romantic.png",
+    image: IMG.wedding,
   },
   {
     title: "Дні народження та ювілеї",

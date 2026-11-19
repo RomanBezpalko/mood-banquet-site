@@ -19,12 +19,15 @@ function App() {
   const [calculatorOpen, setCalculatorOpen] = useState(false);
   const [hasPassedHero, setHasPassedHero] = useState(false);
   const [isFooterVisible, setIsFooterVisible] = useState(false);
+  const [isContactVisible, setIsContactVisible] = useState(false);
 
-  const showMobileCalculator = hasPassedHero && !isFooterVisible;
+  const showMobileCalculator =
+    hasPassedHero && !isContactVisible && !isFooterVisible;
 
   useEffect(() => {
     const hero = document.querySelector("[data-mobile-cta-trigger]");
     const footer = document.querySelector("[data-mobile-cta-hide]");
+    const contact = document.querySelector("#contact");
 
     if (!hero) return undefined;
 
@@ -37,6 +40,21 @@ function App() {
     heroObserver.observe(hero);
 
     let footerObserver;
+    let contactObserver;
+
+    if (contact) {
+      contactObserver = new IntersectionObserver(
+        ([entry]) => {
+          setIsContactVisible(entry.isIntersecting);
+        },
+        {
+          threshold: 0,
+          rootMargin: "0px 0px -10% 0px",
+        },
+      );
+
+      contactObserver.observe(contact);
+    }
 
     if (footer) {
       footerObserver = new IntersectionObserver(
@@ -54,6 +72,7 @@ function App() {
 
     return () => {
       heroObserver.disconnect();
+      contactObserver?.disconnect();
       footerObserver?.disconnect();
     };
   }, []);
@@ -76,7 +95,7 @@ function App() {
         <Contact />
       </main>
       <Footer />
-      <FloatingContact />
+      <FloatingContact mobileVisible={showMobileCalculator} />
       <a
         className={`mobile-calculator-cta ${showMobileCalculator ? "is-visible" : ""}`}
         href="#calculator"

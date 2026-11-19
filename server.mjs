@@ -20,7 +20,9 @@ const TEN_MINUTES = 10 * 60 * 1000;
 const MAX_RATE_LIMIT_KEYS = 10_000;
 const MAX_BODY = 12 * 1024;
 const MIN_FORM_TIME_MS = 1200;
-const configuredAppOrigin = String(setting('APP_ORIGIN') || '').replace(/\/$/, '');
+const configuredAppOrigin = isProduction
+  ? String(setting('APP_ORIGIN') || '').replace(/\/$/, '')
+  : '';
 const trustProxy = setting('TRUST_PROXY') === 'true';
 if (isProduction && !configuredAppOrigin) {
   throw new Error('APP_ORIGIN must be configured in production, for example https://mood.example.');
